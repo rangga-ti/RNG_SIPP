@@ -24,9 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RNG_SIPP">
 
-        <!-- Halaman Utama / Login -->
+        <!-- Splash Screen sebagai Halaman Utama / LAUNCHER saat aplikasi dibuka -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -34,6 +34,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Halaman Auth / Login -->
+        <activity
+            android:name=".AuthActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Halaman Utama (Main) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Halaman Beranda -->
         <activity
@@ -44,6 +56,12 @@
         <!-- Halaman Detail Perabotan -->
         <activity
             android:name=".DetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Halaman Profil Developer -->
+        <activity
+            android:name=".DeveloperProfileActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 

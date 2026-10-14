@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_cream">
 
-    <!-- Toolbar Utama Beranda (Tanpa Tombol Back) -->
+    <!-- Toolbar Utama Beranda (Disertai Tombol Logout) -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarBeranda"
         android:layout_width="match_parent"
@@ -205,7 +205,7 @@
                     android:textStyle="bold" />
             </RelativeLayout>
 
-            <!-- Grid 2 Kolom Produk (Sesuai Referensi Gambar) -->
+            <!-- Grid 2 Kolom Produk -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
