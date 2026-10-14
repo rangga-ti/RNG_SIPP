@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Deep Emerald & Dark Tones -->
+    <color name="green_primary">#0F3832</color>
+    <color name="primary_green">#0F3832</color>
+    <color name="green_dark">#082420</color>
+    <color name="primary_green_dark">#082420</color>
+    <color name="green_light">#E2EBE6</color>
+    <color name="green_chip_bg">#184A43</color>
+
+    <!-- Warm Wood & Accents -->
+    <color name="accent_wood">#8D5B2A</color>
+    <color name="accent_brown">#8D5B2A</color>
+
+    <!-- Neutral & Backgrounds -->
+    <color name="bg_cream">#F7F5EE</color>
+    <color name="white">#FFFFFF</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="gray_chip">#F0EFEA</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#1C2A28</color>
+    <color name="text_secondary">#7A8A87</color>
+    <color name="text_muted">#9AABA7</color>
 </resources>
