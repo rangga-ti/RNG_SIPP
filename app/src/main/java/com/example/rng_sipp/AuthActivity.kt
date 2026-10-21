@@ -29,7 +29,8 @@ class AuthActivity : AppCompatActivity() {
                 editor.putString("username", username)
                 editor.apply()
 
-                val intent = Intent(this, MainActivity::class.java)
+                // Dialihkan ke BaseActivity (bukan MainActivity lagi)
+                val intent = Intent(this, BaseActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
@@ -42,6 +43,7 @@ class AuthActivity : AppCompatActivity() {
                     .show()
             }
         }
+
         binding.btnOpenWeb.setOnClickListener {
             val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ikea.co.id"))
             startActivity(webIntent)

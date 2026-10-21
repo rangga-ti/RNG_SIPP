@@ -2,18 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@android:drawable/ic_menu_today"
+        android:icon="@drawable/ic_home"
         android:title="Home" />
+
     <item
-        android:id="@+id/nav_catalog"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="Catalog" />
+        android:id="@+id/nav_shop"
+        android:icon="@drawable/ic_shop"
+        android:title="Shop" />
+
     <item
-        android:id="@+id/nav_cart"
-        android:icon="@android:drawable/ic_menu_preferences"
-        android:title="Cart" />
+        android:id="@+id/nav_message"
+        android:icon="@drawable/ic_message"
+        android:title="Message" />
+
     <item
-        android:id="@+id/nav_account"
-        android:icon="@android:drawable/ic_menu_myplaces"
-        android:title="Account" />
+        android:id="@+id/nav_notification"
+        android:icon="@drawable/ic_notification"
+        android:title="Notif" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
 </menu>

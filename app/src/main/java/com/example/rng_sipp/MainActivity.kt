@@ -3,7 +3,6 @@ package com.example.rng_sipp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rng_sipp.databinding.ActivityMainBinding
 
@@ -18,17 +17,16 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
-        // Ubah teks & set navigasi ke Halaman Beranda Katalog (SecondActivity)
-        binding.btnLogin.text = "MASUK KE KATALOG"
+        // Ubah navigasi ke BaseActivity (wadah utama Bottom Navigation)
+        binding.btnLogin.text = "MASUK KE APLIKASI"
         binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
         }
 
-        // Ubah teks & set navigasi ke Halaman Profil Developer
-        binding.btnOpenWeb.text = "PROFIL DEVELOPER"
+        binding.btnOpenWeb.text = "LIHAT JELAJAH"
         binding.btnOpenWeb.setOnClickListener {
-            val intent = Intent(this, DeveloperProfileActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
         }
     }
