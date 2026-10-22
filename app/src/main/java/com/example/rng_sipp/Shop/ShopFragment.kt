@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.rng_sipp.DetailActivity
+import com.example.rng_sipp.Shop.ProductDetail.DetailActivity
 import com.example.rng_sipp.databinding.FragmentShopBinding
 
 class ShopFragment : Fragment() {

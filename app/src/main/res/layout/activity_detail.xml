@@ -5,26 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_cream"
-    tools:context=".DetailActivity"
+    tools:context=".Shop.ProductDetail.DetailActivity"
     tools:ignore="HardcodedText,UnusedResources,ContentDescription">
 
-    <!-- Header Custom / Toolbar Detail -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarDetail"
+    <!-- Header Custom (56dp) konsisten dengan struktur BaseActivity -->
+    <RelativeLayout
+        android:id="@+id/headerDetail"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="56dp"
         android:background="@color/green_primary"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:navigationIconTint="@color/white"
-        app:title="Detail Perabotan"
-        app:titleCentered="true"
-        app:titleTextColor="@color/white" />
+        android:paddingHorizontal="8dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Detail Perabotan"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/layoutBottomActions"
-        android:layout_below="@id/toolbarDetail"
+        android:layout_below="@id/headerDetail"
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:scrollbars="none">

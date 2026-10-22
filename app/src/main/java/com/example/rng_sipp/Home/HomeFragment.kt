@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
-import com.example.rng_sipp.DetailActivity
+import com.example.rng_sipp.Shop.ProductDetail.DetailActivity
 import com.example.rng_sipp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

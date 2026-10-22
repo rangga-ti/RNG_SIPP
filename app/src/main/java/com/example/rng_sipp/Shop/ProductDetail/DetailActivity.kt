@@ -1,4 +1,4 @@
-package com.example.rng_sipp
+package com.example.rng_sipp.Shop.ProductDetail
 
 import android.os.Bundle
 import android.util.Log
@@ -17,26 +17,24 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d(TAG, "onCreate: Activity dibuat")
+        Log.d(TAG, "onCreate dipanggil")
 
-        // 1. TANGKAP DATA INTENT
+        // Tangkap data intent
         val productName = intent.getStringExtra("EXTRA_PRODUCT_NAME") ?: "Sofa Ruang Tamu Skandinavia"
         val productPrice = intent.getStringExtra("EXTRA_PRODUCT_PRICE") ?: "Rp3.000.000"
 
         binding.tvDetailTitle.text = productName
         binding.tvDetailPrice.text = productPrice
 
-        // Navigation Back Button
-        binding.toolbarDetail.setNavigationOnClickListener {
+        // Listener tombol back custom header
+        binding.btnBack.setOnClickListener {
             finish()
         }
 
-        // 2. DIALOG & POP UP: Tambah ke Keranjang
         binding.btnAddToCart.setOnClickListener {
             Toast.makeText(this, "$productName ditambahkan ke keranjang!", Toast.LENGTH_SHORT).show()
         }
 
-        // 3. DIALOG & POP UP: AlertDialog Pesan Sekarang
         binding.btnOrderNow.setOnClickListener {
             showOrderConfirmationDialog(productName, productPrice)
         }
@@ -56,29 +54,28 @@ class DetailActivity : AppCompatActivity() {
             .show()
     }
 
-    // MEMANTAU LIFECYCLE ACTIVITY
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart: Activity terlihat")
+        Log.d(TAG, "onStart dipanggil")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume: Activity siap berinteraksi")
+        Log.d(TAG, "onResume dipanggil")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d(TAG, "onPause: Activity dijeda")
+        Log.d(TAG, "onPause dipanggil")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop: Activity tidak terlihat")
+        Log.d(TAG, "onStop dipanggil")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy: Activity dihancurkan")
+        Log.d(TAG, "onDestroy dipanggil")
     }
 }
