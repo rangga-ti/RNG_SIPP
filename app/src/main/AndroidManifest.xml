@@ -2,16 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Izin koneksi internet -->
+    <!-- Izin Koneksi Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- Queries untuk panggil browser eksternal (Android 11+) -->
+    <!-- Queries untuk Panggil Browser Eksternal (Android 11+) -->
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-
             <category android:name="android.intent.category.BROWSABLE" />
-
             <data android:scheme="https" />
         </intent>
     </queries>
@@ -26,14 +24,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RNG_SIPP">
 
-        <!-- Splash Screen sebagai LAUNCHER (pintu masuk pertama aplikasi) -->
+        <!-- Splash Screen (Pintu Masuk Utama Aplikasi) -->
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,27 +41,41 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Halaman Registrasi -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Halaman Verifikasi Registrasi -->
+        <activity
+            android:name=".VerificationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- BaseActivity: Wadah Utama Bottom Navigation -->
         <activity
             android:name=".BaseActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- MainActivity (Mencegah Unregistered Activity Error) -->
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Halaman Detail -->
-        <activity
-            android:name=".Shop.ProductDetail.DetailActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+        <!-- Modul Shop: Produk & Detail Produk -->
         <activity
             android:name=".Shop.Product.ProductActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".Shop.ProductDetail.DetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

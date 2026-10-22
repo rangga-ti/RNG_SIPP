@@ -20,28 +20,45 @@ class AuthActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.etUsername.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
+            val inputUsername = binding.etUsername.text.toString().trim()
+            val inputPassword = binding.etPassword.text.toString().trim()
 
-            if (username.isNotEmpty() && username == password) {
+            // Ambil data registrasi dari SharedPreferences
+            val savedUsername = sharedPref.getString("reg_username", "") ?: ""
+            val savedPassword = sharedPref.getString("reg_password", "") ?: ""
+
+            // Rule 1: Username == Password
+            val isRule1 = inputUsername.isNotEmpty() && inputUsername == inputPassword
+
+            // Rule 2: Match dengan data di SharedPreferences
+            val isRule2 = inputUsername.isNotEmpty() &&
+                    inputUsername == savedUsername &&
+                    inputPassword == savedPassword
+
+            if (isRule1 || isRule2) {
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
+                editor.putString("username", inputUsername)
                 editor.apply()
 
-                // Dialihkan ke BaseActivity (bukan MainActivity lagi)
                 val intent = Intent(this, BaseActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
-                    .setMessage("Username dan Password harus sama serta tidak boleh kosong!")
+                    .setMessage("Username atau Password salah! (Aturan: Username = Password ATAU gunakan akun terdaftar)")
                     .setPositiveButton("OK") { dialog, _ ->
                         dialog.dismiss()
                     }
                     .show()
             }
+        }
+
+        // Navigasi ke Halaman Registrasi
+        binding.btnRegisterLink?.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnOpenWeb.setOnClickListener {
