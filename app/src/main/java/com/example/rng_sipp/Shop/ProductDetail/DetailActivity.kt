@@ -5,7 +5,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.rng_sipp.R
+import com.example.rng_sipp.Shop.Payment.PaymentBottomSheetDialog
 import com.example.rng_sipp.databinding.ActivityDetailBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailActivity : AppCompatActivity() {
 
@@ -26,7 +29,10 @@ class DetailActivity : AppCompatActivity() {
         binding.tvDetailTitle.text = productName
         binding.tvDetailPrice.text = productPrice
 
-        // Listener tombol back custom header
+        // Inisialisasi Image Slider produk
+        setupProductImageSlider()
+
+        // Listener tombol back header
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -35,17 +41,52 @@ class DetailActivity : AppCompatActivity() {
             Toast.makeText(this, "$productName ditambahkan ke keranjang!", Toast.LENGTH_SHORT).show()
         }
 
+        // Listener tombol beli -> Tampilkan Bottom Sheet
         binding.btnOrderNow.setOnClickListener {
-            showOrderConfirmationDialog(productName, productPrice)
+            showPaymentBottomSheet(productName, productPrice)
         }
     }
 
-    private fun showOrderConfirmationDialog(name: String, price: String) {
+    // Fungsi khusus setup ViewPager2 slider gambar
+    private fun setupProductImageSlider() {
+        val imageList = listOf(
+            R.drawable.sofasatu,
+            R.drawable.sofadua,
+            R.drawable.sofatiga
+        )
+
+        val sliderAdapter = ImageSliderAdapter(imageList)
+        binding.vpProductImage.adapter = sliderAdapter
+
+        // Hubungkan ViewPager2 ke TabLayout untuk indikator titik
+        TabLayoutMediator(binding.tlImageIndicator, binding.vpProductImage) { _, _ -> }.attach()
+    }
+
+    // Fungsi menampilkan BottomSheet Metode Pembayaran
+    private fun showPaymentBottomSheet(name: String, price: String) {
+        val paymentDialog = PaymentBottomSheetDialog { selectedPayment ->
+            showOrderConfirmationDialog(name, price, selectedPayment)
+        }
+        paymentDialog.show(supportFragmentManager, "PaymentBottomSheet")
+    }
+
+    // Fungsi dialog konfirmasi pesanan
+    private fun showOrderConfirmationDialog(name: String, price: String, paymentMethod: String) {
+        val orderMessage = """
+            Detail Pesanan:
+            
+            • Produk: $name
+            • Total: $price
+            • Pembayaran: $paymentMethod
+            
+            Lanjutkan transaksi?
+        """.trimIndent()
+
         AlertDialog.Builder(this)
             .setTitle("Konfirmasi Pemesanan")
-            .setMessage("Apakah Anda ingin langsung memesan $name seharga $price?")
-            .setPositiveButton("Ya, Pesan") { dialog, _ ->
-                Toast.makeText(this, "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show()
+            .setMessage(orderMessage)
+            .setPositiveButton("Ya, Bayar") { dialog, _ ->
+                Toast.makeText(this, "Pesanan berhasil dibuat via $paymentMethod!", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             }
             .setNegativeButton("Batal") { dialog, _ ->
