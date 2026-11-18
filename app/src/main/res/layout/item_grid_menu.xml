@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_grid_item"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="6dp"
+    android:paddingVertical="12dp">
+
+    <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_rounded_card"
+        android:backgroundTint="#EEF5F1">
+
+        <ImageView
+            android:id="@+id/ivGridIcon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:contentDescription="Ikon Kategori"
+            android:src="@drawable/ic_menu_catalog"
+            app:tint="@color/green_primary" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvGridTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Katalog"
+        android:textColor="@color/text_primary"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
