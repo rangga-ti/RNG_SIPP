@@ -82,6 +82,18 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".Shop.Cart.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Shop.Payment.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Shop.OrderStatus.OrderStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Shop.Product.ManageProductActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

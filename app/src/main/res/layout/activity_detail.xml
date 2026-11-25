@@ -8,7 +8,7 @@
     tools:context=".Shop.ProductDetail.DetailActivity"
     tools:ignore="HardcodedText,UnusedResources,ContentDescription">
 
-    <!-- Header Custom (56dp) konsisten dengan struktur BaseActivity -->
+    <!-- Header Custom (56dp) dengan Tombol Back & Shortcut Keranjang -->
     <RelativeLayout
         android:id="@+id/headerDetail"
         android:layout_width="match_parent"
@@ -38,6 +38,19 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnCartShortcut"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_shop"
+            app:tint="@color/white" />
     </RelativeLayout>
 
     <ScrollView
@@ -55,7 +68,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Card Banner Image Slider -->
+            <!-- Card Banner Image Slider (Tetap memakai ViewPager2 + TabLayout aslimu) -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
@@ -73,7 +86,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
-                    <!-- Indikator Titik-Titik Presisi di Tengah Bawah Gambar -->
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tlImageIndicator"
                         android:layout_width="wrap_content"
@@ -116,17 +128,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Rp3.000.000"
+                android:text="Rp 3.000.000"
                 android:textColor="@color/green_primary"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <!-- Pilihan Warna & Ukuran Chip -->
+            <!-- Pilihan Warna & Ukuran Interaktif -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -141,35 +154,33 @@
                         android:textColor="@color/text_primary"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+                    <RadioGroup
+                        android:id="@+id/rgColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:orientation="horizontal">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginEnd="6dp"
-                            app:cardBackgroundColor="@color/green_primary"
-                            app:cardCornerRadius="14dp"
-                            app:strokeWidth="0dp" />
+                        <RadioButton
+                            android:id="@+id/rbEmerald"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/green_primary"
+                            android:checked="true"
+                            android:text="Emerald"
+                            android:textColor="@color/text_primary"
+                            android:textSize="11sp" />
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginEnd="6dp"
-                            app:cardBackgroundColor="#7F8C8D"
-                            app:cardCornerRadius="14dp"
-                            app:strokeWidth="0dp" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            app:cardBackgroundColor="@color/accent_wood"
-                            app:cardCornerRadius="14dp"
-                            app:strokeWidth="0dp" />
-                    </LinearLayout>
+                        <RadioButton
+                            android:id="@+id/rbWood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:buttonTint="@color/accent_wood"
+                            android:text="Wood"
+                            android:textColor="@color/text_primary"
+                            android:textSize="11sp" />
+                    </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -185,32 +196,41 @@
                         android:textColor="@color/text_primary"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.card.MaterialCardView
+                    <RadioGroup
+                        android:id="@+id/rgSize"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        app:cardBackgroundColor="@color/green_primary"
-                        app:cardCornerRadius="8dp"
-                        app:strokeWidth="0dp">
+                        android:orientation="horizontal">
 
-                        <TextView
+                        <RadioButton
+                            android:id="@+id/rb3Seater"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="6dp"
+                            android:buttonTint="@color/green_primary"
+                            android:checked="true"
                             android:text="3 Seater"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
+                            android:textColor="@color/text_primary"
+                            android:textSize="11sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb2Seater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:buttonTint="@color/green_primary"
+                            android:text="2 Seater"
+                            android:textColor="@color/text_primary"
+                            android:textSize="11sp" />
+                    </RadioGroup>
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Box Spesifikasi -->
+            <!-- Box Spesifikasi (Tetap memakai ID asli tvDetailDimensions & tvDetailMaterial) -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 app:cardBackgroundColor="#EFECE1"
                 app:cardCornerRadius="14dp"
                 app:strokeWidth="0dp">
